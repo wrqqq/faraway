@@ -27,7 +27,7 @@ function App() {
                 setPersons(data.data.results)
             })*/
 
-            const baseUrl = `http://develop.marvel.com/v1/public/characters?nameStartsWith=${characterName}`
+            const baseUrl = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${characterName}`
             const time = Number(new Date())
             // eslint-disable-next-line no-useless-concat
             const hash = md5(time + `fb2ee5e8ef44d3c6f0c7046db2e421d5d8181512` + `5bbb2895287d6a461a6e6419341fdf5a`)
