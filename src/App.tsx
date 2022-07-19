@@ -15,7 +15,7 @@ type Person = {
 
 function App() {
     const [characters, setCharacters] = useState([])
-    const [characterName, setCharacterName] = useState("")
+    const [characterName, setCharacterName] = useState("spider")
     axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded"
 
     useEffect(() => {
