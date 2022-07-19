@@ -14,7 +14,7 @@ type Person = {
 //}
 
 function App() {
-    const [persons, setPersons] = useState([])
+    const [characters, setCharacters] = useState([])
     const [characterName, setCharacterName] = useState("")
     axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded"
     const getData = async () => {
@@ -25,23 +25,13 @@ function App() {
                 setPersons(data.data.results)
             })*/
 
+        const baseUrl = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${characterName}`
         const time = Number(new Date())
         // eslint-disable-next-line no-useless-concat
-        const hash = md5(
-            time +
-                `fb2ee5e8ef44d3c6f0c7046db2e421d5d8181512` +
-                `5bbb2895287d6a461a6e6419341fdf5a
-`,
-        )
-        setPersons([])
-        setCharacterName("123")
+        const hash = md5(time + `fb2ee5e8ef44d3c6f0c7046db2e421d5d8181512` + `5bbb2895287d6a461a6e6419341fdf5a`)
 
-        console.log(hash)
-
-        const {data} = await axios.get(
-            `http://developer.marvel.com/v1/public/characters?apikey=5bbb2895287d6a461a6e6419341fdf5a`,
-        )
-        console.log(data)
+        const {data} = await axios.get(`${baseUrl}&ts=${time}&apikey=5bbb2895287d6a461a6e6419341fdf5a&hash=${hash}`)
+        setCharacters(data.data.results)
     }
 
     useEffect(() => {
@@ -53,7 +43,7 @@ function App() {
             <Header />
             <ListItem></ListItem>
             <ul>
-                {persons.map((person: Person) => (
+                {characters.map((person: Person) => (
                     <li>{`${person.name} ${characterName}`}</li>
                 ))}
             </ul>
