@@ -25,7 +25,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }))
 
-export default function ListItem({name}) {
+export default function ListItem() {
     const [expanded, setExpanded] = React.useState(false)
 
     const handleExpandClick = () => {
