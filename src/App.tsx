@@ -24,7 +24,7 @@ function App() {
                 console.log(data)
                 setPersons(data.data.results)
             })*/
-        const baseUrl = `http://developer.marvel.com/v1/public/characters`
+
         const time = Number(new Date())
         // eslint-disable-next-line no-useless-concat
         const hash = md5(
@@ -33,6 +33,8 @@ function App() {
                 `5bbb2895287d6a461a6e6419341fdf5a
 `,
         )
+        setPersons([])
+        setCharacterName("123")
 
         console.log(hash)
 
@@ -52,7 +54,7 @@ function App() {
             <ListItem></ListItem>
             <ul>
                 {persons.map((person: Person) => (
-                    <li>{person.name}</li>
+                    <li>{`${person.name} ${characterName}`}</li>
                 ))}
             </ul>
         </div>
