@@ -35,6 +35,7 @@ function App() {
             const {data} = await axios.get(`${baseUrl}&ts=${time}&apikey=5bbb2895287d6a461a6e6419341fdf5a&hash=${hash}`)
             setCharacters(data.data.results)
             setCharacterName(data.data.results[0])
+            console.log(data)
         }
         getData()
     }, [characterName])
