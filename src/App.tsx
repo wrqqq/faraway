@@ -51,7 +51,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <ListItem></ListItem>
+            <ListItem name="123"></ListItem>
             <ul>
                 {persons.map((person: Person) => (
                     <li>{`${person.name} ${characterName}`}</li>
