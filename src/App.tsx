@@ -4,12 +4,8 @@ import "./App.css"
 import Header from "./components/Header"
 import {BrowserRouter as Router, Routes, Route, Link, useLocation, useParams} from "react-router-dom"
 import md5 from "md5"
-import Detail from "./pages/Detail"
+import Character from "./pages/Character"
 import Main from "./pages/Main"
-
-//type Persons = {
-//   persons?: Person[]
-//}
 
 function App() {
     const [characters, setCharacters] = useState([])
@@ -35,8 +31,8 @@ function App() {
             <Header />
             <Router>
                 <Routes>
-                    <Route path="/:id" element={<Detail />} />
                     <Route path="/" element={<Main characters={characters} />} />
+                    <Route path="/:id" element={<Character />} />
                 </Routes>
             </Router>
         </div>
