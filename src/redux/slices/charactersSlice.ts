@@ -1,5 +1,4 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
-import {AppDispatch} from "../store"
 import axios from "axios"
 import md5 from "md5"
 
@@ -15,13 +14,15 @@ type Character = {
 
 type CharactersState = {
     characters: Character[]
+    query: string
 }
 
 const initialState: CharactersState = {
     characters: [],
+    query: "",
 }
 
-export const fetchCharacters = createAsyncThunk<Character[], undefined, {rejectValue: string}>(
+export const fetchCharacters = createAsyncThunk<Character[], string, {rejectValue: string}>(
     "characters/fetchCharacters",
     async function (query, {rejectWithValue}) {
         const baseUrl = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}`
@@ -34,7 +35,7 @@ export const fetchCharacters = createAsyncThunk<Character[], undefined, {rejectV
             return rejectWithValue("Server Error!")
         }
 
-        return data
+        return data.data.results
     },
 )
 

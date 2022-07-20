@@ -11,16 +11,11 @@ type Character = {
     img: string
 }
 
-export default function ListItem({name, description, img}: Character) {
+export default function ListItem({name, img}: Character) {
     return (
-        <Card sx={{maxWidth: 345, height: 500, cursor: "pointer"}}>
+        <Card sx={{maxWidth: 345, cursor: "pointer"}}>
             <CardHeader sx={{height: 34}} title={name} />
             <CardMedia component="img" height="194" image={img} alt={name} />
-            <CardContent>
-                <Typography variant="body2" color="text.secondary" height="300">
-                    {description}
-                </Typography>
-            </CardContent>
         </Card>
     )
 }

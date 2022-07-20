@@ -6,6 +6,9 @@ import Toolbar from "@mui/material/Toolbar"
 import Typography from "@mui/material/Typography"
 import InputBase from "@mui/material/InputBase"
 import SearchIcon from "@mui/icons-material/Search"
+import {Link} from "react-router-dom"
+import {useAppDispatch} from "../hooks"
+import {fetchCharacters} from "../redux/slices/charactersSlice"
 
 const Search = styled("div")(({theme}) => ({
     "position": "relative",
@@ -50,6 +53,13 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }))
 
 export default function Header() {
+    const [search, setSearch] = React.useState("hulk")
+    const dispatch = useAppDispatch()
+    const searchHandler = (e: React.SyntheticEvent): void => {
+        const target = e.target as HTMLInputElement
+        setSearch(target.value)
+        dispatch(fetchCharacters(target.value))
+    }
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
@@ -59,13 +69,20 @@ export default function Header() {
                         noWrap
                         component="div"
                         sx={{flexGrow: 1, display: {xs: "none", sm: "block"}}}>
-                        Marvel Characters
+                        <Link to="/" style={{color: "white", textDecoration: "none"}}>
+                            Marvel Characters
+                        </Link>
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
-                        <StyledInputBase placeholder="Search…" inputProps={{"aria-label": "search"}} />
+                        <StyledInputBase
+                            placeholder="Search…"
+                            onChange={(e) => searchHandler(e)}
+                            value={search}
+                            inputProps={{"aria-label": "search"}}
+                        />
                     </Search>
                 </Toolbar>
             </AppBar>
