@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useEffect} from "react"
 import axios from "axios"
 import "./App.css"
 import Header from "./components/Header"
@@ -10,7 +10,6 @@ import {fetchCharacters} from "./redux/slices/charactersSlice"
 
 function App() {
     const characters = useAppSelector((state) => state.characters.characters)
-    //const [characterName, setCharacterName] = useState("hulk")
     const dispatch = useAppDispatch()
     axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded"
 

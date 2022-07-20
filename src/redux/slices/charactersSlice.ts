@@ -27,7 +27,7 @@ export const fetchCharacters = createAsyncThunk<Character[], string, {rejectValu
     async function (query, {rejectWithValue}) {
         const baseUrl = `http://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}`
         const time = Number(new Date())
-        const hash = md5(time + `fb2ee5e8ef44d3c6f0c7046db2e421d5d8181512` + `5bbb2895287d6a461a6e6419341fdf5a`)
+        const hash = md5(time + `fb2ee5e8ef44d3c6f0c7046db2e421d5d81815125bbb2895287d6a461a6e6419341fdf5a`)
 
         const {data} = await axios.get(`${baseUrl}&ts=${time}&apikey=5bbb2895287d6a461a6e6419341fdf5a&hash=${hash}`)
 
