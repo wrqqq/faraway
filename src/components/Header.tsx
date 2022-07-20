@@ -59,7 +59,7 @@ export default function Header() {
                         noWrap
                         component="div"
                         sx={{flexGrow: 1, display: {xs: "none", sm: "block"}}}>
-                        Star Wars Characters
+                        Marvel Characters
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
